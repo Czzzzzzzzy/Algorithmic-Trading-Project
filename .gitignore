@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+secrets.*
+credentials.*
+token.*
+
+# Temporary files
+*.tmp
+*.log
+debug/
+temp/
+tmp/
+.Rhistory
+
+# Archived heavy or optional experiment outputs
+outputs/archive/**
+!outputs/archive/
+!outputs/archive/.gitkeep
+outputs/archive/debug_or_temporary/
+outputs/archive/advanced_challengers/
+outputs/archive/challenger_experiments/
+outputs/archive/label_search/
+
+# Detailed robustness experiment tables kept local unless explicitly needed
+outputs/universe_ablation_results.csv
+outputs/universe_ablation_per_instrument.csv
+outputs/feature_pruning_results.csv
+outputs/feature_pruning_validation_cluster_importance.csv
+outputs/universe_feature_pruning_combined_results.csv
+
+# Local-only files
+.local/
+private/
+scratch/
