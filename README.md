@@ -173,7 +173,55 @@ Several appendix experiments were run and documented, but not promoted:
 
 These experiments are useful for the report appendix, but the final prediction file remains unchanged.
 
-## 9. Reproducibility Notes
+## 9. Optional Strategy Construction / Bonus Track
+
+The required deliverable remains:
+
+```text
+outputs/metamodel_predictions.csv
+```
+
+Strategy construction is an optional bonus extension. It builds signed position weights from:
+
+```text
+primary_signal direction x metamodel probability confidence
+```
+
+Run:
+
+```bash
+python3 coursework_strategy_bonus.py
+```
+
+Optional output:
+
+```text
+outputs/strategy_weights.csv
+```
+
+Format:
+
+```text
+date,instrument,weight
+```
+
+Positive weight means long, negative weight means short, and zero weight means no position.
+
+The selected optional strategy is `soft_allocation`:
+
+```text
+raw_weight = primary_signal * prediction
+```
+
+Daily gross exposure normalization and a max absolute single-instrument weight cap of `0.25` are used.
+
+The strategy runner tests simple explainable rules such as threshold filters, confidence scaling, and soft allocation. It reports CAGR, annualised volatility, Sharpe ratio, Sortino ratio, maximum drawdown, average holding period, and turnover.
+
+The strategy backtest is based on public 2022H1 only. It should be interpreted cautiously because the test sample is limited. In the final baseline comparison, the selected `soft_allocation` strategy matches the blindly-follow-primary-signal equal-weight baseline after the current conservative cap and normalization.
+
+This optional strategy does not change the required metamodel prediction submission.
+
+## 10. Reproducibility Notes
 
 Train/validation splitting is chronological. Public 2022H1 is used as a clean out-of-sample sanity-check window, not as the main tuning period.
 
@@ -181,7 +229,7 @@ Features are lagged to avoid look-ahead bias.
 
 The target is a binary triple-barrier meta-label for a non-zero primary-signal trade opportunity. It should not be described as raw future return direction or "true ground truth".
 
-## 10. Final Prediction Hash
+## 11. Final Prediction Hash
 
 The frozen final prediction hash is:
 
@@ -191,7 +239,7 @@ c5c7ca869d905b384ef3c9072c3377e0f43c7a7ad03c9125aa062077f0f9b369
 
 If this hash changes, stop and investigate before submission.
 
-## 11. What Not To Change Before Submission
+## 12. What Not To Change Before Submission
 
 - Do not overwrite `outputs/metamodel_predictions.csv`.
 - Do not change the final model.

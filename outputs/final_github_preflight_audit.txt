@@ -1,65 +1,80 @@
 # Final GitHub Preflight Audit
 
-Generated: 2026-05-20T21:04:54
+Generated: 2026-05-23T15:19:49
 Project root: /Users/ziyunjameschen/Downloads/IC_本地/algorithmic trading
 
-## Final Prediction File
+## Required Metamodel Prediction Check
 Path: /Users/ziyunjameschen/Downloads/IC_本地/algorithmic trading/outputs/metamodel_predictions.csv
 Rows: 1408
 Columns: ['date', 'instrument', 'prediction']
-Duplicate date-instrument rows: 0
 SHA256: c5c7ca869d905b384ef3c9072c3377e0f43c7a7ad03c9125aa062077f0f9b369
-Expected SHA256: c5c7ca869d905b384ef3c9072c3377e0f43c7a7ad03c9125aa062077f0f9b369
 Hash matches frozen final: True
 
-## Promotion / Model-State Checks
-HMM enabled in config: False
+## Optional Strategy Weights Check
+Path: /Users/ziyunjameschen/Downloads/IC_本地/algorithmic trading/outputs/strategy_weights.csv
+Rows: 1408
+Dates: 128
+Instruments: 11
+Columns: ['date', 'instrument', 'weight']
+Missing values: 0
+Duplicate date-instrument rows: 0
+Zero-primary-signal non-zero weights: 0
+Direction-misaligned weights: 0
+Min weight: -0.2500000000
+Max weight: 0.1666665000
+Max gross exposure: 0.9999990000
+Max abs weight: 0.2500000000
+
+## Optional Strategy Output Files
+- strategy_backtest_metrics.csv: True
+- strategy_daily_returns.csv: True
+- strategy_turnover.csv: True
+- strategy_summary.md: True
+- strategy_bonus_audit.txt: True
+- strategy_sanity_check.md: True
+- strategy_baseline_comparison.csv: True
+- strategy_baseline_comparison.md: True
+- strategy_cumulative_return.png: True
+- strategy_drawdown.png: True
+
+## Model-State Checks
+HMM enabled in CONFIG: False
 USE_HMM_EXTENSION constant: False
 Label-search challenger promoted: False
 Advanced challengers promoted: False
 Universe/feature-pruning robustness promoted: False
 
-## Python Source Parse Checks
-Python files parsed successfully: 15/15
+## Python Module Compile Checks
+Python files parsed successfully: 17/17
 
 ## Notebook JSON Checks
 Notebooks parsed successfully: 3/3
 
 ## Safety and Privacy Checks
-.env files found: None
-Private key-like files found: None
-Hidden/test-label-like files found: None
-Files larger than 50MB: None
-Files larger than 100MB: None
 Suspicious string matches:
 - .gitignore: SECRET
 - .gitignore: TOKEN
-- .gitignore: .env
+- outputs/final_github_preflight_audit.txt: SECRET
+- outputs/final_github_preflight_audit.txt: TOKEN
+- outputs/final_github_preflight_audit.txt: PRIVATE KEY
 - coursework/docs/FINAL_SUBMISSION_CHECKLIST.md: TOKEN
 - coursework/docs/FINAL_SUBMISSION_CHECKLIST.md: PRIVATE KEY
-- coursework/docs/FINAL_SUBMISSION_CHECKLIST.md: .env
-Interpretation: matches are documentation/gitignore mentions, not credential values.
+Interpretation: matches are documentation/audit/gitignore mentions, not credential values.
+.env files found: None
+Cache/OS files found: None
+Notebook checkpoint dirs found: None
+Files >50MB: None
+Files >100MB: None
 
-## Files Intended To Be Excluded From Git
-- __pycache__/
-- *.py[cod]
-- .ipynb_checkpoints/
-- .DS_Store
-- .env
-- *.pem
-- *.key
-- outputs/archive/**
-- outputs/universe_ablation_results.csv
-- outputs/universe_ablation_per_instrument.csv
-- outputs/feature_pruning_results.csv
-- outputs/feature_pruning_validation_cluster_importance.csv
-- outputs/universe_feature_pruning_combined_results.csv
-- .local/
-- private/
-- scratch/
+## Git Staging / Ignore Checks
+Staged files: None
+Bad staged cache/secret files: None
+Expected ignored files:
+- outputs/archive/challenger_experiments/challenger_experiments.py: True
+- outputs/archive/debug_or_temporary/modelling_dataset.csv.gz: True
+- outputs/feature_pruning_results.csv: True
 
 ## Result
 Warnings: None
 Status: PASS
 Safe to proceed: Yes, subject to coursework data-sharing policy for raw input files.
-Raw data policy: no project instruction was found prohibiting upload; raw input files are kept because they are required for reproducibility and are under 50MB.

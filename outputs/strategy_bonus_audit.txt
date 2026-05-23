@@ -1,0 +1,39 @@
+# Strategy Bonus Audit
+
+Final prediction hash used: c5c7ca869d905b384ef3c9072c3377e0f43c7a7ad03c9125aa062077f0f9b369
+Expected frozen hash: c5c7ca869d905b384ef3c9072c3377e0f43c7a7ad03c9125aa062077f0f9b369
+Hash matches frozen final: True
+Selected strategy method: soft_allocation
+Strategy weight file path: /Users/ziyunjameschen/Downloads/IC_本地/algorithmic trading/outputs/strategy_weights.csv
+
+Output validation:
+- rows: 1408
+- date_count: 128
+- instrument_count: 11
+- min_weight: -0.25
+- max_weight: 0.1666665
+- max_abs_weight: 0.25
+- gross_exposure_mean: 0.97656153125
+- gross_exposure_max: 0.9999990000000001
+- zero_signal_nonzero_weight: 0
+- direction_misaligned_weight: 0
+
+Gross exposure summary:
+- mean gross exposure: 0.976562
+- max gross exposure: 0.999999
+
+Turnover summary:
+- mean daily turnover: 0.543694
+- max daily turnover: 1.250000
+
+Backtest metrics summary:
+- cost_bps=0: CAGR=0.834403, ann_vol=0.140666, Sharpe=4.387834, Sortino=7.479878, max_drawdown=-0.034672, avg_holding_period=3.996047, avg_turnover=0.542726
+- cost_bps=1: CAGR=0.809524, ann_vol=0.140742, Sharpe=4.288276, Sortino=7.284367, max_drawdown=-0.034839, avg_holding_period=3.996047, avg_turnover=0.542726
+- cost_bps=2: CAGR=0.784981, ann_vol=0.140820, Sharpe=4.188778, Sortino=7.094095, max_drawdown=-0.035005, avg_holding_period=3.996047, avg_turnover=0.542726
+- cost_bps=5: CAGR=0.713321, ann_vol=0.141064, Sharpe=3.890682, Sortino=6.548301, max_drawdown=-0.035505, avg_holding_period=3.996047, avg_turnover=0.542726
+
+Leakage checks:
+- Weights use same-date metamodel predictions and primary signals only.
+- Return calculation applies weight at date t to close-to-close return from t to t+1.
+- Hidden 2022H2 data is not used.
+- Required metamodel predictions were read, not overwritten.

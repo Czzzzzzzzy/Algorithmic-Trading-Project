@@ -196,6 +196,19 @@ LABEL_SEARCH_GRID = {
     "vol_lookback_days": [10, 20, 40, 60],
 }
 
+STRATEGY_METHODS = [
+    "threshold_filter_050",
+    "threshold_filter_055",
+    "threshold_filter_060",
+    "confidence_linear",
+    "confidence_scaled",
+    "soft_allocation",
+]
+STRATEGY_COST_BPS_GRID = [0, 1, 2, 5]
+STRATEGY_GROSS_EXPOSURE_TARGET = 1.0
+STRATEGY_MAX_ABS_WEIGHT_PER_INSTRUMENT = 0.25
+TRADING_DAYS_PER_YEAR = 252
+
 PROMOTED_FINAL_DESCRIPTION = "Calibrated 0.50 Logistic + 0.50 signal-history MLP blend"
 PROMOTED_FINAL_MEAN_AUC = 0.583
 PROMOTED_FINAL_MEAN_F1 = 0.626
@@ -222,6 +235,11 @@ class CourseworkConfig:
     promoted_final_mean_auc: float = PROMOTED_FINAL_MEAN_AUC
     promoted_final_mean_f1: float = PROMOTED_FINAL_MEAN_F1
     promoted_final_hash: str = PROMOTED_FINAL_HASH
+    strategy_methods: tuple[str, ...] = tuple(STRATEGY_METHODS)
+    strategy_cost_bps_grid: tuple[int, ...] = tuple(STRATEGY_COST_BPS_GRID)
+    strategy_gross_exposure_target: float = STRATEGY_GROSS_EXPOSURE_TARGET
+    strategy_max_abs_weight_per_instrument: float = STRATEGY_MAX_ABS_WEIGHT_PER_INSTRUMENT
+    trading_days_per_year: int = TRADING_DAYS_PER_YEAR
 
     @property
     def final_prediction_path(self) -> Path:
@@ -242,6 +260,30 @@ class CourseworkConfig:
     @property
     def cluster_importance_path(self) -> Path:
         return self.output_dir / "cluster_importance.csv"
+
+    @property
+    def strategy_weights_path(self) -> Path:
+        return self.output_dir / "strategy_weights.csv"
+
+    @property
+    def strategy_backtest_metrics_path(self) -> Path:
+        return self.output_dir / "strategy_backtest_metrics.csv"
+
+    @property
+    def strategy_daily_returns_path(self) -> Path:
+        return self.output_dir / "strategy_daily_returns.csv"
+
+    @property
+    def strategy_turnover_path(self) -> Path:
+        return self.output_dir / "strategy_turnover.csv"
+
+    @property
+    def strategy_summary_path(self) -> Path:
+        return self.output_dir / "strategy_summary.md"
+
+    @property
+    def strategy_audit_path(self) -> Path:
+        return self.output_dir / "strategy_bonus_audit.txt"
 
 
 CONFIG = CourseworkConfig()

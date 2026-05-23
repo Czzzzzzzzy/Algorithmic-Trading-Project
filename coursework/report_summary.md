@@ -155,7 +155,42 @@ The final GitHub preflight audit is saved in:
 outputs/final_github_preflight_audit.txt
 ```
 
-## 13. Limitations
+## 13. Optional Strategy Construction
+
+The optional competition-track extension builds signed position weights from the frozen metamodel probabilities and primary-signal direction. It does not change the required metamodel prediction file.
+
+Methods tested:
+
+- `threshold_filter_050`
+- `threshold_filter_055`
+- `threshold_filter_060`
+- `confidence_linear`
+- `confidence_scaled`
+- `soft_allocation`
+
+The selected optional rule is `soft_allocation`, where the raw weight is `primary_signal x prediction`, with zero weight for zero primary signals. Weights are normalized by date, use a gross exposure target of `1.0`, and apply a conservative max absolute instrument weight of `0.25`.
+
+The selected strategy's headline public-2022H1 backtest metrics are:
+
+- Gross Sharpe: `4.388`
+- 2 bps net Sharpe: `4.189`
+- Gross CAGR: `0.834`
+- 2 bps net CAGR: `0.785`
+- Gross maximum drawdown: `-0.035`
+- Average daily turnover: about `0.543`
+
+Baseline comparison: under the current conservative cap and gross-exposure normalization, `soft_allocation` matches the blindly-follow-primary-signal equal-weight baseline in this public window. It does not improve over that blind baseline on 2 bps net Sharpe or cumulative return. The comparison is saved in `outputs/strategy_baseline_comparison.csv` and `outputs/strategy_baseline_comparison.md`.
+
+Plots are saved in:
+
+- `outputs/strategy_cumulative_return.png`
+- `outputs/strategy_drawdown.png`
+
+The backtest assumes weight at date `t` earns the close-to-close return from `t` to `t+1`. Transaction-cost scenarios of `0`, `1`, `2`, and `5` bps are reported in `outputs/strategy_backtest_metrics.csv`.
+
+Limitations: this strategy extension is a simple optional backtest on the public prediction window. The high Sharpe should be interpreted cautiously because the public window has only 128 prediction dates. The close-to-close convention and transaction-cost model are simplified. The strategy does not use hidden 2022H2 data, does not retrain the metamodel, and should not be treated as a live trading system or as part of the required prediction deliverable.
+
+## 14. Limitations
 
 The triple-barrier label is a selected label specification, not an absolute truth.
 

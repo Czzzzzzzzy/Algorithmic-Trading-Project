@@ -59,6 +59,43 @@ Do not use advanced challenger predictions.
 
 Do not replace the frozen final prediction file unless there is a confirmed formatting bug.
 
+## Optional Strategy Bonus
+
+Strategy construction is optional bonus work, not the required metamodel deliverable.
+
+Run:
+
+```bash
+python3 coursework_strategy_bonus.py
+```
+
+Optional output:
+
+```text
+outputs/strategy_weights.csv
+```
+
+Expected columns:
+
+```text
+date,instrument,weight
+```
+
+The current optional strategy method is `soft_allocation`. It uses primary-signal direction and metamodel probability confidence. It does not change `outputs/metamodel_predictions.csv`.
+
+Optional bonus checks:
+
+- `outputs/strategy_weights.csv` has exact columns `date,instrument,weight`
+- no missing weights
+- no duplicate `date,instrument` rows
+- zero primary signals have zero weight
+- weight signs agree with primary signals
+- daily gross exposure is not above `1.0`
+- single-instrument max absolute weight cap is respected
+- HMM remains disabled
+- archived challengers are not promoted
+- final metamodel prediction hash remains `c5c7ca869d905b384ef3c9072c3377e0f43c7a7ad03c9125aa062077f0f9b369`
+
 ## GitHub Submission Checklist
 
 - README explains the project purpose on the first screen.
