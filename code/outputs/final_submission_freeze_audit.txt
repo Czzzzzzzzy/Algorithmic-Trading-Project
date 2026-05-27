@@ -1,0 +1,29 @@
+Final submission freeze audit
+================================
+
+previous_final_archived: outputs/archive/metamodel_predictions_previous_logistic_or_old_final.csv
+sha256: 8cc80452c790a49648a3e6971d5c4c3f8718404b689277bf0948fdd212dbd54f
+
+promoted_final: outputs/metamodel_predictions.csv
+sha256: c5c7ca869d905b384ef3c9072c3377e0f43c7a7ad03c9125aa062077f0f9b369
+
+calibrated_challenger_source: outputs/archive/challenger_experiments/challenger_predictions_blend_0p50_logistic_0p50_mlp_sigmoid_calibrated.csv
+sha256: c5c7ca869d905b384ef3c9072c3377e0f43c7a7ad03c9125aa062077f0f9b369
+
+Validation checks
+-----------------
+columns_exact: True
+row_count_1408: True
+unique_dates_128: True
+unique_instruments_11: True
+no_missing_values: True
+no_duplicate_date_instrument: True
+prediction_in_0_1: True
+no_extra_index_columns: True
+source_matches_promoted: True
+previous_differs_from_promoted: True
+
+Final promoted model: Calibrated Logistic-MLP Probability Blend
+Source challenger: blend_0.50_logistic_0.50_mlp_sigmoid_calibrated
+HMM enabled: False
+No new challenger experiments run during freeze; only file promotion, hashing, and validation were performed.
