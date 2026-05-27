@@ -1,0 +1,23 @@
+# Final Integration Audit
+
+Final model: Calibrated 0.50 Logistic + 0.50 signal-history MLP blend
+Final prediction file: /Users/ziyunjameschen/Downloads/IC_本地/algorithmic trading/Deliverables/code/outputs/metamodel_predictions.csv
+Final prediction SHA256: c5c7ca869d905b384ef3c9072c3377e0f43c7a7ad03c9125aa062077f0f9b369
+Expected frozen SHA256: c5c7ca869d905b384ef3c9072c3377e0f43c7a7ad03c9125aa062077f0f9b369
+Hash matches frozen final: True
+HMM enabled: False
+
+Coursework pipeline stages represented:
+1. Feature engineering from lagged OHLCV-derived data and market context.
+2. Triple-barrier meta-label construction for non-zero primary-signal trade opportunities.
+3. Model-suite comparison across linear, tree-based, boosting, and MLP models.
+4. Cluster-level permutation feature importance.
+5. Clean out-of-sample evaluation with primary-signal baseline comparison.
+6. Final probability export with exact columns date,instrument,prediction.
+
+Frozen-final policy:
+- No new modelling experiments were run during final integration cleanup.
+- Label-search, primary-signal-only, and advanced challengers are documented as robustness/appendix work only.
+- The label-search challenger was not promoted.
+- The final prediction file was validated, not replaced.
+- Challenger and label-search artifacts are archived under outputs/archive/.
